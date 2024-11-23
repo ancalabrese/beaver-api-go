@@ -5,8 +5,6 @@ import (
 	"log"
 	"os"
 
-	"github.com/ancalabrese/beaver-client-libraries/go/client"
-	"github.com/ancalabrese/beaver-client-libraries/go/client/content"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 	"github.com/joho/godotenv"
@@ -79,7 +77,7 @@ func main() {
 		return r.SetHeaderParam("X-API-Key", apikey)
 	})
 
-	params := content.NewGenerateContentParams()
+	params := client.NewGenerateContentParams()
 	params.SetSchema(scheme)
 
 	f, err := os.Open("cv.pdf")

@@ -6,7 +6,6 @@ require (
 	github.com/go-openapi/errors v0.22.0
 	github.com/go-openapi/runtime v0.28.0
 	github.com/go-openapi/strfmt v0.23.0
-	github.com/joho/godotenv v1.5.1
 )
 
 require (
