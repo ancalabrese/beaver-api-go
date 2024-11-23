@@ -1,0 +1,66 @@
+swagger: "2.0"
+host: beaver-46602.uc.r.appspot.com
+basePath: /api/v1
+schemes:
+  - https
+info:
+  title: Beaver API
+  description: Structuring unparseable data to power insights.
+  version: 1.0.0
+
+# Global security (applies to all operations):
+securityDefinitions:
+  key:
+    type: apiKey
+    in: header
+    name: X-API-Key
+    description: "Obtain your API key from https://beaver.com/console" 
+security:
+  - key: []
+paths:
+  /content/generate:
+    post:
+      operationId: generateContent
+      summary: Extract structured data from a file based on a provided JSON schema
+      tags: ["content"]
+      parameters:
+        - in: formData
+          name: attachment 
+          type: file
+          description: The file to parse.
+          x-mimetype: application/pdf
+          required: true
+        - in: formData
+          name: schema 
+          type: string
+          required: true 
+          description: The JSON schema that will be returned in the response.
+          x-example: '{ "type": "object", "properties": { "name": { "type": "string" } } }'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          examples:
+            application/json: 
+              {"name": "Pino Marittimo"}
+        '400':
+          $ref: '#/responses/BadRequestError'
+        '401':
+          $ref: '#/responses/UnauthorizedError'
+        '500':
+          $ref: '#/responses/InternalServerError'
+
+responses:
+  UnauthorizedError:
+    description: API key is missing or invalid
+    headers:
+      WWW_Authenticate:
+        type: string 
+  InternalServerError:
+    description: Something didin't work on our side. Not your fault! 
+    headers:
+      WWW_Authenticate:
+        type: string 
+  BadRequestError:
+    description: Malformed request
