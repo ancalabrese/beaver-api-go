@@ -62,7 +62,7 @@ GenerateContentOK describes a response with status code 200, with default header
 OK
 */
 type GenerateContentOK struct {
-	Payload interface{}
+	Payload string
 }
 
 // IsSuccess returns true when this generate content o k response has a 2xx status code
@@ -105,7 +105,7 @@ func (o *GenerateContentOK) String() string {
 	return fmt.Sprintf("[POST /content/generate][%d] generateContentOK %s", 200, payload)
 }
 
-func (o *GenerateContentOK) GetPayload() interface{} {
+func (o *GenerateContentOK) GetPayload() string {
 	return o.Payload
 }
 
