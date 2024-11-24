@@ -6,7 +6,9 @@ package content
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
 	"fmt"
+	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
@@ -60,6 +62,7 @@ GenerateContentOK describes a response with status code 200, with default header
 OK
 */
 type GenerateContentOK struct {
+	Payload interface{}
 }
 
 // IsSuccess returns true when this generate content o k response has a 2xx status code
@@ -93,14 +96,25 @@ func (o *GenerateContentOK) Code() int {
 }
 
 func (o *GenerateContentOK) Error() string {
-	return fmt.Sprintf("[POST /content/generate][%d] generateContentOK", 200)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /content/generate][%d] generateContentOK %s", 200, payload)
 }
 
 func (o *GenerateContentOK) String() string {
-	return fmt.Sprintf("[POST /content/generate][%d] generateContentOK", 200)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /content/generate][%d] generateContentOK %s", 200, payload)
+}
+
+func (o *GenerateContentOK) GetPayload() interface{} {
+	return o.Payload
 }
 
 func (o *GenerateContentOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// response payload
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }
