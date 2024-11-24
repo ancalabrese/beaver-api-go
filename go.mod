@@ -1,4 +1,4 @@
-module github.com/ancalabrese/beaver-client-libraries/go
+module github.com/ancalabrese/beaver-api-go
 
 go 1.23.3
 
