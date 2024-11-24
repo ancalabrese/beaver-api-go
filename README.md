@@ -122,8 +122,8 @@ Beaver is a powerful SDK that allows developers to effortlessly extract structur
 
 #### How do I get an API Key
 
-Sign up and get yourself a key at [Beaver.com](https://beaver.com)
+Sign up and get yourself a key at [Beaver]()
 
 
 #### How does pricing work?
-We offer flexible pricing plans based on your usage needs. Choose a plan that aligns with your data volume and request frequency. Visit [website](https://beaver.com) for details.
+We offer flexible pricing plans based on your usage needs. Choose a plan that aligns with your data volume and request frequency. Visit [website]() for details.
