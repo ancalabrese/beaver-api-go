@@ -10,7 +10,7 @@ import (
 	httptransport "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/ancalabrese/beaver-client-libraries/go/client/content"
+	"github.com/ancalabrese/beaver-api-go/client/content"
 )
 
 // Default beaver API HTTP client.
